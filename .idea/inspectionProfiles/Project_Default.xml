@@ -1,0 +1,13 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="PyUnresolvedReferencesInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredIdentifiers">
+        <list>
+          <option value="dags.kafka_stream.format_data" />
+          <option value="airflow.providers.python" />
+        </list>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>

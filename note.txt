@@ -1,0 +1,3 @@
+all command needed
+*pip install confluent_kafka simplejson pyspark
+*pip freeze > requirements.txt
