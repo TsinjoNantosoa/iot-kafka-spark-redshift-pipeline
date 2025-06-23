@@ -29,6 +29,28 @@ def get_next_time():
     return start_time
 
 
+def generate_gps_data(device_id, timestamp, vehicle_type='private'):
+    return {
+        'id': str(uuid.uuid4()),
+        'deviceId': device_id,
+        'timestamp': timestamp,
+        'speed': random.uniform(0, 40),  # vitesse in km/h
+        'direction': 'North-East',
+        'vehicle': vehicle_type
+    }
+
+
+def generate_traffic_camera_data(device_id, timestamp, camera_id):
+    return {
+        'id': uuid.uuid4(),
+        'deviceId': device_id,
+        'cameraId': camera_id,
+        'timestamp': timestamp,
+        'snapshot': 'Based64EncodeString'
+
+    }
+
+
 def simulate_vehicle_movement():
     global start_location
 
@@ -59,6 +81,8 @@ def generate_vehicle_data(device_id):
 def simulate_journey(producer, device_id):
     while True:
         vehicle_data = generate_vehicle_data(device_id)
+        gps_data = generate_gps_data(device_id, vehicle_data['timestamp'])
+        traffic_data_camera = generate_traffic_camera_data(device_id,vehicle_data['timestamp'], 'Tsinjo-Cam123')
         print(vehicle_data)
         # Pour l’envoyer à Kafka, tu peux ajouter ceci si nécessaire :
         # producer.produce(topic=VEHICLE_TOPIC, value=json.dumps(vehicle_data))
